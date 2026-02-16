@@ -1,0 +1,292 @@
+.cover-page {
+    width: 100%;
+    height: 100vh;
+    background: #f8f9fa;
+    color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center horizontally */
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    /* Remove padding here, add to inner content if needed */
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Ensure scroll */
+}
+
+/* Animated Mesh Gradient Background */
+.bg-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    background-image:
+        radial-gradient(at 40% 20%, hsla(148, 100%, 93%, 1) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(189, 100%, 96%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, hsla(341, 100%, 96%, 1) 0px, transparent 50%),
+        radial-gradient(at 80% 50%, hsla(356, 100%, 96%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(22, 100%, 96%, 1) 0px, transparent 50%),
+        radial-gradient(at 80% 100%, hsla(240, 100%, 96%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, hsla(343, 100%, 96%, 1) 0px, transparent 50%);
+    z-index: 1;
+    filter: blur(40px);
+    opacity: 0.8;
+}
+
+/* Texture Overlay */
+.cover-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Floating Shapes */
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.shape-circle {
+    width: 400px;
+    height: 400px;
+    background: #a8e6cf;
+    top: -100px;
+    right: -100px;
+    animation: float 10s infinite ease-in-out;
+}
+
+.shape-square {
+    width: 300px;
+    height: 300px;
+    background: #dcedc1;
+    bottom: -50px;
+    left: -50px;
+    animation: float 12s infinite ease-in-out reverse;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(20px, 40px) rotate(10deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+/* Main Content Container */
+.academic-layout {
+    z-index: 3;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 50px;
+    margin: 100px auto 60px;
+    /* Use margin to position and space */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.05),
+        0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+}
+
+.academic-layout:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+/* Header Section */
+.academic-header {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 30px;
+}
+
+.magazine-title {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    margin: 0;
+    background: linear-gradient(45deg, #1a1a1a, #4a4a4a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    /* Elegant serif for title */
+}
+
+.title-underline {
+    width: 60px;
+    height: 4px;
+    background: #0A8F3D;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Student Info Section */
+.student-info {
+    text-align: center;
+}
+
+.student-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+}
+
+.student-code {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.03);
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* Spacer */
+.spacer-large {
+    height: 40px;
+}
+
+/* Professor Info Section */
+.professor-info {
+    text-align: center;
+    position: relative;
+}
+
+.professor-info .label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.professor-name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+}
+
+/* Footer Section */
+.academic-footer {
+    text-align: center;
+    width: 100%;
+    padding-top: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.academic-footer p {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.university-name {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #0A8F3D !important;
+    margin-bottom: 5px !important;
+}
+
+.faculty-name,
+.program-name {
+    font-weight: 600;
+}
+
+.location-date {
+    font-size: 0.9rem !important;
+    color: #999 !important;
+    margin-top: 15px !important;
+}
+
+/* Start Button */
+.start-reading-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.start-reading-link:hover {
+    transform: scale(1.1) rotate(90deg);
+    background: #0A8F3D;
+    box-shadow: 0 15px 30px rgba(10, 143, 61, 0.3);
+}
+
+.arrow {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .magazine-title {
+        font-size: 3rem;
+        letter-spacing: 0.1em;
+    }
+
+    .academic-layout {
+        padding: 30px 20px;
+        gap: 30px;
+    }
+
+    .student-name {
+        font-size: 1.8rem;
+    }
+
+    .shape-circle,
+    .shape-square {
+        width: 200px;
+        height: 200px;
+    }
+}

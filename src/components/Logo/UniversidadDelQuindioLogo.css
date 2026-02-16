@@ -1,0 +1,211 @@
+/* ============================================
+   Universidad del Quindío Logo Styles
+   Pure CSS recreation of the university logo
+   ============================================ */
+
+/* Main logo container */
+.universidad-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.8s ease-in-out;
+    cursor: default;
+}
+
+/* Fade-in animation on mount */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effect: slight elevation */
+.universidad-logo:hover {
+    transform: translateY(-5px);
+}
+
+/* ============================================
+   Logo Icon (Green Symbol)
+   ============================================ */
+
+.logo-icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+/* Main green rectangle with rounded bottom corners */
+.logo-rectangle {
+    position: relative;
+    width: 120px;
+    height: 160px;
+    background: #0A8F3D;
+    /* Green institucional */
+    border-radius: 0 0 15px 15px;
+    /* Slightly rounded bottom corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(10, 143, 61, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Hover: intensify green color */
+.universidad-logo:hover .logo-rectangle {
+    background: #0CAF49;
+    /* Slightly brighter green */
+    box-shadow: 0 6px 16px rgba(10, 143, 61, 0.3);
+}
+
+/* White vertical oval on the right side */
+.logo-oval {
+    position: absolute;
+    width: 40px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+    /* Creates oval shape */
+    top: 50%;
+    right: 10px;
+    /* 10px from right edge */
+    transform: translateY(-50%);
+}
+
+/* Small white horizontal rectangle on the right side */
+.logo-small-rect {
+    position: absolute;
+    width: 35px;
+    /* Wider for horizontal orientation */
+    height: 15px;
+    /* Shorter for horizontal orientation */
+    background: white;
+    bottom: 15px;
+    right: 10px;
+    /* 10px from right edge */
+    border-radius: 2px;
+}
+
+/* ============================================
+   Logo Text
+   ============================================ */
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #0A8F3D;
+    transition: color 0.3s ease;
+}
+
+/* Hover: intensify text color */
+.universidad-logo:hover .logo-text {
+    color: #0CAF49;
+}
+
+.logo-text-line {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+    .logo-rectangle {
+        width: 100px;
+        height: 140px;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .logo-oval {
+        width: 35px;
+        height: 100px;
+    }
+
+    .logo-small-rect {
+        width: 28px;
+        height: 12px;
+        bottom: 12px;
+        right: 8px;
+    }
+
+    .logo-text-line {
+        font-size: 0.95rem;
+        letter-spacing: 1.5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-rectangle {
+        width: 80px;
+        height: 120px;
+        border-radius: 0 0 10px 10px;
+    }
+
+    .logo-oval {
+        width: 28px;
+        height: 80px;
+    }
+
+    .logo-small-rect {
+        width: 22px;
+        height: 10px;
+        bottom: 10px;
+        right: 8px;
+    }
+
+    .logo-text-line {
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* ============================================
+   Dark Mode Support
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+    .logo-text {
+        color: #1FD65F;
+        /* Brighter green for dark backgrounds */
+    }
+
+    .universidad-logo:hover .logo-text {
+        color: #3FE67F;
+    }
+
+    .logo-rectangle {
+        box-shadow: 0 4px 12px rgba(31, 214, 95, 0.3);
+    }
+
+    .universidad-logo:hover .logo-rectangle {
+        background: #1FD65F;
+        box-shadow: 0 6px 16px rgba(31, 214, 95, 0.4);
+    }
+}
+
+/* ============================================
+   Size Scaling via CSS Variable
+   ============================================ */
+
+.universidad-logo {
+    transform: scale(var(--logo-size, 1));
+    transform-origin: center;
+}

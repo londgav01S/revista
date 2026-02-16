@@ -1,0 +1,146 @@
+.pyramid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background: #F4F6F9;
+    border-radius: 20px;
+    margin: 40px auto;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    column-span: all;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.pyramid-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    /* Restored gap */
+    /* Spacing between levels */
+    position: relative;
+    width: 100%;
+    /* filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.1)); Removed global shadow */
+}
+
+/* Wrapper controls size and layout, NO clip-path here */
+.pyramid-level-wrapper {
+    position: relative;
+    height: 100px;
+    width: var(--level-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1;
+    /* Default z-index */
+    opacity: 0;
+    /* For fade-in animation */
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* The actual colored trapezoid */
+.pyramid-level-shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--level-color);
+    clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 0;
+    transition: all 0.4s ease;
+}
+
+/* Improve shape for top level - Restored Trapezoid */
+.pyramid-level-shape.level-3 {
+    clip-path: polygon(25% 0, 75% 0, 100% 100%, 0% 100%);
+    border-radius: 10px 10px 0 0;
+}
+
+/* Animation Delays */
+.pyramid-level-wrapper.level-1 {
+    animation-delay: 0.1s;
+}
+
+.pyramid-level-wrapper.level-2 {
+    animation-delay: 0.3s;
+}
+
+.pyramid-level-wrapper.level-3 {
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Content Styles */
+.level-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    /* Above shape */
+    padding: 0 20px;
+    color: #1a1a1a;
+}
+
+.level-intro {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 2px;
+}
+
+.level-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 2px;
+}
+
+.level-subtitle {
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .pyramid-level-wrapper {
+        height: 80px;
+        width: 90% !important;
+        /* Force full width on mobile */
+        margin-bottom: 10px;
+    }
+
+    .pyramid-level-shape {
+        clip-path: none;
+        /* Simplify shape for mobile */
+        border-radius: 8px;
+    }
+
+    .pyramid-level-shape.level-3 {
+        clip-path: none;
+    }
+
+    .pyramid-wrapper {
+        gap: 10px;
+    }
+}
